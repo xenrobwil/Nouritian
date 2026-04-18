@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutz – Nouritian</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; background: #f5ede0; color: #3D2314; padding: 40px 20px; }
+    .container { max-width: 640px; margin: 0 auto; }
+    .back { display: inline-block; margin-bottom: 32px; color: #3D2314; text-decoration: none; font-size: 15px; opacity: 0.6; }
+    .back:hover { opacity: 1; }
+    h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .meta { font-size: 13px; opacity: 0.5; margin-bottom: 40px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 36px 0 10px; }
+    h3 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; }
+    p { font-size: 15px; line-height: 1.7; color: #5a3825; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { font-size: 15px; line-height: 1.7; color: #5a3825; margin-bottom: 4px; }
+    a { color: #3D2314; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="index.html">← Zurück</a>
+    <h1>Datenschutzerklärung</h1>
+    <div class="meta">Stand: April 2026 · Xenia Wilhelm, Tuchmacherring 13, 38106 Braunschweig · hello@nouritian.com</div>
+
+    <h2>1. Grundsatz</h2>
+    <p>Nouritian speichert deine Rezepte, Zutaten und Nährwertdaten <strong>ausschließlich lokal auf deinem Gerät</strong> (SQLite-Datenbank). Es gibt keine Nutzerkonten, keine Registrierung und keine Übertragung persönlicher Daten an unsere Server.</p>
+
+    <h2>2. Welche Daten werden verarbeitet?</h2>
+    <h3>2.1 Lokal auf deinem Gerät</h3>
+    <p>Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen. Diese Daten verlassen dein Gerät nicht.</p>
+
+    <h3>2.2 Beim Rezept-Import</h3>
+    <p>Rezepttext wird zur Strukturierung an OpenAI übermittelt (via Supabase-Proxy). Es werden keine personenbezogenen Daten übertragen.</p>
+
+    <h3>2.3 Beim Level-Up</h3>
+    <p>Zutatennamen werden zur Analyse an OpenAI übermittelt (via Supabase-Proxy). Keine personenbezogenen Daten.</p>
+
+    <h3>2.4 Nährwert-Lookup</h3>
+    <p>Englische Zutatennamen werden anonym an die USDA FoodData Central API übermittelt.</p>
+
+    <h2>3. Drittanbieter und Datentransfer in Drittländer</h2>
+    <p>Die nachfolgend genannten Dienste haben ihren Sitz in den USA. Der Datentransfer erfolgt auf Basis des <strong>EU-US Data Privacy Framework</strong> (Angemessenheitsbeschluss der EU-Kommission, Juli 2023) sowie der Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO.</p>
+
+    <h3>OpenAI (via Supabase-Proxy)</h3>
+    <p>Zweck: Rezept-Parsing, Zutatenanalyse · Daten: Rezepttexte, Zutatennamen · OpenAI verwendet API-Eingaben nicht für Modelltraining.<br>
+    <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a></p>
+
+    <h3>Supabase</h3>
+    <p>Zweck: Proxy für OpenAI und USDA · Daten: Rezepttexte, Zutatennamen<br>
+    <a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
+
+    <h3>USDA FoodData Central</h3>
+    <p>Zweck: Nährwertdaten · Daten: englische Zutatennamen (anonym) · US-Bundesbehörde, Public Domain</p>
+
+    <h2>4. Datenquellen</h2>
+    <ul>
+      <li><strong>USDA FoodData Central:</strong> Public Domain</li>
+      <li><strong>Bundeslebensmittelschlüssel (BLS 4.0):</strong> © Max Rubner-Institut (MRI), lizenziert unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></li>
+    </ul>
+
+    <h2>5. Kein Tracking</h2>
+    <p>Nouritian verwendet kein Tracking, keine Werbung und keine Analyse-Tools.</p>
+
+    <h2>6. Berechtigungen</h2>
+    <ul>
+      <li><strong>Kamera:</strong> Nur beim Foto-Import. Kein dauerhafter Zugriff.</li>
+      <li><strong>Internet:</strong> Nur für Rezept-Import, Level-Up und USDA-Lookup.</li>
+    </ul>
+
+    <h2>7. Deine Rechte</h2>
+    <p>Da wir keine personenbezogenen Daten speichern, entfallen die meisten DSGVO-Rechte in der Praxis. Deine Rezeptdaten kannst du jederzeit in der App löschen. Bei Fragen: hello@nouritian.com</p>
+
+    <h2>8. Änderungen</h2>
+    <p>Die aktuelle Version ist stets unter nouritian.com/datenschutz abrufbar.</p>
+  </div>
+</body>
+</html>
