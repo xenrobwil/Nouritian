@@ -24,37 +24,39 @@
   <div class="container">
     <a class="back" href="index.html">← Zurück</a>
     <h1>Datenschutzerklärung</h1>
-    <div class="meta">Stand: April 2026 · Xenia Wilhelm, Tuchmacherring 13, 38106 Braunschweig · hello@nouritian.com</div>
+    <div class="meta">Stand: Mai 2026 · Xenia Wilhelm, Tuchmacherring 13, 38106 Braunschweig · hello@nouritian.com</div>
+    <p style="background:#fff8e1;border-left:3px solid #f9a825;padding:10px 14px;font-size:13px;margin-bottom:8px;">Diese Datenschutzerklärung befindet sich in anwaltlicher Prüfung und wird zeitnah aktualisiert.</p>
 
     <h2>1. Grundsatz</h2>
-    <p>Nouritian speichert deine Rezepte, Zutaten und Nährwertdaten <strong>ausschließlich lokal auf deinem Gerät</strong> (SQLite-Datenbank). Es gibt keine Nutzerkonten, keine Registrierung und keine Übertragung persönlicher Daten an unsere Server.</p>
+    <p>Nouritian speichert deine Rezepte, Zutaten und Nährwertdaten <strong>ausschließlich lokal auf deinem Gerät</strong> (SQLite-Datenbank). Es gibt keine Nutzerkonten und keine Registrierung. Beim Rezept-Import wird deine IP-Adresse technisch bedingt an unseren Proxy-Server (Supabase) übermittelt — sie wird dort nicht dauerhaft gespeichert und nicht an OpenAI weitergegeben. Deine Rezeptdaten kannst du jederzeit durch Deinstallation der App vollständig und unwiderruflich löschen.</p>
 
     <h2>2. Welche Daten werden verarbeitet?</h2>
     <h3>2.1 Lokal auf deinem Gerät</h3>
-    <p>Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen. Diese Daten verlassen dein Gerät nicht.</p>
+    <p>Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen. Diese Daten verlassen dein Gerät nicht und werden nicht an Nouritian oder Dritte übermittelt.</p>
 
     <h3>2.2 Beim Rezept-Import</h3>
-    <p>Rezepttext wird zur Strukturierung an OpenAI übermittelt (via Supabase-Proxy). Es werden keine personenbezogenen Daten übertragen.</p>
+    <p>Der Rezepttext (Zutaten, Mengenangaben, Zubereitungsschritte) wird zur automatischen Strukturierung an OpenAI übermittelt — ausschließlich via Supabase-Proxy (siehe Abschnitt 3). Der Rezepttext enthält typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen in Rezepten zu speichern. OpenAI sieht nicht die IP-Adresse des Nutzers, da die Anfrage über unseren Proxy-Server geleitet wird. OpenAI speichert den Anfrageinhalt nicht für eigene Zwecke (store=false) und verwendet API-Eingaben nicht für Modelltraining (laut OpenAI API Data Usage Policy). Aus technischen Gründen kann OpenAI Anfragen bis zu 30 Tage in Sicherheitskopien vorhalten (Missbrauchserkennung).</p>
 
-    <h3>2.3 Beim Level-Up</h3>
-    <p>Zutatennamen werden zur Analyse an OpenAI übermittelt (via Supabase-Proxy). Keine personenbezogenen Daten.</p>
+    <h3>2.3 Beim Level-Up (ab R2)</h3>
+    <p>Zutatennamen werden zur KI-gestützten Analyse an OpenAI übermittelt (via Supabase-Proxy). Zutatennamen enthalten typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen einzugeben. OpenAI sieht nicht die IP-Adresse des Nutzers. Gleiche Bedingungen wie unter 2.2.</p>
 
     <h3>2.4 Nährwert-Lookup</h3>
-    <p>Englische Zutatennamen werden anonym an die USDA FoodData Central API übermittelt.</p>
+    <p>Englische Zutatennamen werden zur Nährwertabfrage direkt an die USDA FoodData Central API übermittelt. Dabei wird technisch bedingt die IP-Adresse des Nutzers übertragen. Die Zutatennamen enthalten typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen einzugeben. Die USDA ist eine US-Bundesbehörde, die Daten sind Public Domain — kein Auftragsverarbeitungsverhältnis erforderlich.</p>
 
     <h2>3. Drittanbieter und Datentransfer in Drittländer</h2>
-    <p>Die nachfolgend genannten Dienste haben ihren Sitz in den USA. Der Datentransfer erfolgt auf Basis des <strong>EU-US Data Privacy Framework</strong> (Angemessenheitsbeschluss der EU-Kommission, Juli 2023) sowie der Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO.</p>
+    <p>Beim Rezept-Import, Level-Up und Nährwert-Lookup werden technisch bedingt Daten an externe Dienste übermittelt. Diese Dienste sind als <strong>Auftragsverarbeiter gem. Art. 28 DSGVO</strong> tätig. Soweit die nachfolgend genannten Dienste ihren Unternehmenssitz in den USA haben, erfolgt der Datentransfer auf Basis des <strong>EU-US Data Privacy Framework</strong> (Angemessenheitsbeschluss der EU-Kommission, Juli 2023) sowie hilfsweise der Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO.</p>
 
-    <h3>OpenAI (via Supabase-Proxy)</h3>
-    <p>Zweck: Rezept-Parsing, Zutatenanalyse · Daten: Rezepttexte, Zutatennamen · OpenAI verwendet API-Eingaben nicht für Modelltraining.<br>
-    <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a></p>
-
-    <h3>Supabase</h3>
-    <p>Zweck: Proxy für OpenAI und USDA · Daten: Rezepttexte, Zutatennamen<br>
+    <h3>Supabase (Auftragsverarbeiter)</h3>
+    <p>Zweck: Proxy-Server für OpenAI- und USDA-Anfragen · Unternehmenssitz: USA · Datenverarbeitung: EU (Frankfurt) · Verarbeitete Daten: IP-Adresse des Nutzers, Zeitstempel, Rezepttexte und Zutatennamen (als Bestandteil der weitergeleiteten Anfragen) · Supabase speichert Anfrageinhalte nicht dauerhaft; technische Zugriffsprotokolle (IP-Adresse, Zeitstempel) werden für einen begrenzten Zeitraum automatisch gelöscht. Da Supabase als US-Unternehmen administrativen Zugriff auf EU-Server haben kann, erfolgt der Datentransfer auf Basis von DPF und hilfsweise SCCs.<br>
     <a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
 
+    <h3>OpenAI (Auftragsverarbeiter, via Supabase-Proxy)</h3>
+    <p>Zweck: Rezept-Parsing, Zutatenanalyse · Unternehmenssitz und Server-Standort: USA · Verarbeitete Daten: Rezepttexte, Zutatennamen (keine personenbezogenen Daten) · OpenAI sieht nicht die IP-Adresse des Nutzers · OpenAI speichert Anfrageinhalte nicht für eigene Zwecke und verwendet API-Eingaben nicht für Modelltraining · Aus Sicherheitsgründen (Missbrauchserkennung) können Anfragen bis zu 30 Tage in Sicherheitskopien vorgehalten werden.<br>
+    <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a> ·
+    <a href="https://openai.com/policies/data-processing-addendum">openai.com/policies/data-processing-addendum</a></p>
+
     <h3>USDA FoodData Central</h3>
-    <p>Zweck: Nährwertdaten · Daten: englische Zutatennamen (anonym) · US-Bundesbehörde, Public Domain</p>
+    <p>Zweck: Nährwertdaten · Daten: englische Zutatennamen (keine personenbezogenen Daten) · US-Bundesbehörde, Public Domain · Kein Auftragsverarbeitungsverhältnis erforderlich.</p>
 
     <h2>4. Datenquellen</h2>
     <ul>
@@ -71,10 +73,16 @@
       <li><strong>Internet:</strong> Nur für Rezept-Import, Level-Up und USDA-Lookup.</li>
     </ul>
 
-    <h2>7. Deine Rechte</h2>
-    <p>Da wir keine personenbezogenen Daten speichern, entfallen die meisten DSGVO-Rechte in der Praxis. Deine Rezeptdaten kannst du jederzeit in der App löschen. Bei Fragen: hello@nouritian.com</p>
+    <h2>7. Gesundheitshinweis</h2>
+    <p>Bei Nouritian handelt es sich nicht um eine medizinische oder ernährungstherapeutische Organisation. Die angezeigten Nährwertangaben, Analysen und KI-generierten Empfehlungen stellen keine medizinische oder diätetische Beratung dar und ersetzen diese nicht.</p>
+    <p>Nutzer mit bestehenden Erkrankungen, Essstörungen, Diabetes, Nahrungsmittelallergien oder anderen gesundheitlichen Einschränkungen werden ausdrücklich empfohlen, vor einer ernährungsbezogenen Änderung ihres Verhaltens einen Arzt oder Ernährungsberater zu konsultieren.</p>
+    <p>Nährwertangaben werden auf Basis der eingegebenen Zutaten automatisch aus öffentlichen Datenbanken (USDA FoodData Central, Bundeslebensmittelschlüssel) abgefragt. Dabei können fehlerhafte Zuordnungen auftreten — z. B. wenn eine Zutat nicht eindeutig erkannt wird oder kein passender Datenbankeintrag existiert. Mengenangaben werden teilweise automatisch geschätzt. Nutzerinnen und Nutzer sind angehalten, die angezeigten Nährwerte zu prüfen und bei Bedarf zu korrigieren.</p>
+    <p>Nouritian übernimmt keine Haftung für Entscheidungen, die auf Basis dieser Angaben getroffen werden. Mit der Nutzung der App bestätigt die Nutzerin bzw. der Nutzer, die alleinige Verantwortung für die eigene Ernährung und Gesundheit zu tragen.</p>
 
-    <h2>8. Änderungen</h2>
+    <h2>8. Deine Rechte (DSGVO)</h2>
+    <p>Da Nouritian keine personenbezogenen Daten auf unseren Servern speichert, liegen uns in der Regel keine Daten vor, auf die sich deine DSGVO-Rechte beziehen würden. Deine gesetzlichen Rechte auf Auskunft, Berichtigung, Löschung und Widerspruch bleiben davon unberührt. Deine Rezeptdaten kannst du jederzeit durch Deinstallation der App vollständig löschen. Bei Anfragen wende dich an: <a href="mailto:hello@nouritian.com">hello@nouritian.com</a></p>
+
+    <h2>9. Änderungen</h2>
     <p>Die aktuelle Version ist stets unter nouritian.com/datenschutz abrufbar.</p>
   </div>
 </body>
