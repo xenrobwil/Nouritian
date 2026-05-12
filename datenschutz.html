@@ -31,7 +31,7 @@
 
     <h2>2. Welche Daten werden verarbeitet?</h2>
     <h3>2.1 Lokal auf deinem Gerät</h3>
-    <p>Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen. Diese Daten verlassen dein Gerät nicht und werden nicht an Nouritian oder Dritte übermittelt.</p>
+    <p>Alle von dir gespeicherten Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen verbleiben ausschließlich auf deinem Gerät (SQLite-Datenbank) und werden nicht an Nouritian oder Dritte übermittelt. Eine Ausnahme gilt beim Rezept-Import und Nährwert-Lookup: dabei werden Rezeptinhalte und Zutatennamen temporär an externe Dienste übertragen (siehe Abschnitte 2.2–2.4).</p>
 
     <h3>2.2 Beim Rezept-Import</h3>
     <p>Der Rezepttext (Zutaten, Mengenangaben, Zubereitungsschritte) wird zur automatischen Strukturierung an OpenAI übermittelt — ausschließlich via Supabase-Proxy (siehe Abschnitt 3). Der Rezepttext enthält typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen in Rezepten zu speichern. OpenAI sieht nicht die IP-Adresse des Nutzers, da die Anfrage über unseren Proxy-Server geleitet wird. OpenAI speichert den Anfrageinhalt nicht für eigene Zwecke (store=false) und verwendet API-Eingaben nicht für Modelltraining (laut OpenAI API Data Usage Policy). Aus technischen Gründen kann OpenAI Anfragen bis zu 30 Tage in Sicherheitskopien vorhalten (Missbrauchserkennung).</p>
