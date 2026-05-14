@@ -36,8 +36,9 @@
     <h3>3.1 Lokal auf deinem Gerät</h3>
     <p>Alle von dir gespeicherten Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen verbleiben ausschließlich auf deinem Gerät (SQLite-Datenbank) und werden nicht an Nouritian oder Dritte übermittelt. Eine Ausnahme gilt beim Rezept-Import und Nährwert-Lookup: dabei werden Rezeptinhalte und Zutatennamen temporär an externe Dienste übertragen (siehe Abschnitte 3.2–3.4).</p>
 
-    <h3>3.2 Beim Rezept-Import</h3>
-    <p>Der Rezepttext (Zutaten, Mengenangaben, Zubereitungsschritte) wird zur automatischen Strukturierung an OpenAI übermittelt — ausschließlich via Supabase-Proxy (siehe Abschnitt 4). Der Rezepttext enthält typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen in Rezepten zu speichern. OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. OpenAI speichert den Anfrageinhalt nicht für eigene Zwecke (store=false) und verwendet API-Eingaben nicht für Modelltraining (laut OpenAI API Data Usage Policy). Aus technischen Gründen kann OpenAI Anfragen bis zu 30 Tage in Sicherheitskopien vorhalten (Missbrauchserkennung).</p>
+    <h3>3.2 Beim Rezept-Import per URL</h3>
+    <p>Beim Import per URL wird der Rezepttext (Zutaten, Mengenangaben, Zubereitungsschritte) zur automatischen Strukturierung an OpenAI übermittelt — ausschließlich via Supabase-Proxy (siehe Abschnitt 4). Der Rezepttext enthält typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen in Rezepten zu speichern. OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. OpenAI speichert den Anfrageinhalt nicht für eigene Zwecke (store=false) und verwendet API-Eingaben nicht für Modelltraining (laut OpenAI API Data Usage Policy). Aus technischen Gründen kann OpenAI Anfragen bis zu 30 Tage in Sicherheitskopien vorhalten (Missbrauchserkennung).</p>
+    <p>Beim Import per Foto oder Text wird der Text ausschließlich lokal auf dem Gerät verarbeitet — es findet keine Übermittlung an externe Dienste statt.</p>
 
     <h3>3.3 Beim Level-Up (ab R2)</h3>
     <p>Zutatennamen werden zur KI-gestützten Analyse an OpenAI übermittelt (via Supabase-Proxy). Zutatennamen enthalten typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen einzugeben. OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. Gleiche Bedingungen wie unter 2.2.</p>
@@ -71,7 +72,7 @@
 
     <h2>7. Berechtigungen</h2>
     <ul>
-      <li><strong>Kamera:</strong> Nur beim Foto-Import. Kein dauerhafter Zugriff.</li>
+      <li><strong>Kamera:</strong> Optional, zum Hinzufügen eines Rezeptfotos (Gericht-Bild). Kein dauerhafter Zugriff.</li>
       <li><strong>Internet:</strong> Nur für Rezept-Import, Level-Up und USDA-Lookup.</li>
     </ul>
 
