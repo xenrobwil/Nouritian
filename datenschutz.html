@@ -43,7 +43,10 @@
     <h3>3.3 Beim Level-Up (ab R2)</h3>
     <p>Zutatennamen werden zur KI-gestützten Analyse an OpenAI übermittelt (via Supabase-Proxy). Zutatennamen enthalten typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen einzugeben. OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. Gleiche Bedingungen wie unter 2.2.</p>
 
-    <h3>3.4 Nährwert-Lookup</h3>
+    <h3>3.4 Autoren-Bilder</h3>
+    <p>Beim Import per URL kann die App das Profilbild des Rezept-Autors (z.B. vom jeweiligen Foodblog) als externe Bild-URL speichern. Beim Anzeigen des Rezepts wird dieses Bild direkt vom Server des Drittanbieters geladen — dabei sieht der Drittanbieter die IP-Adresse des Nutzers. Dieser Vorgang ist technisch vergleichbar mit dem Aufrufen einer Webseite im Browser. Nouritian hat keinen Einfluss auf die Datenverarbeitung durch den jeweiligen Drittanbieter.</p>
+
+    <h3>3.5 Nährwert-Lookup</h3>
     <p>Ins Englische übersetzte Zutatennamen werden zur Nährwertabfrage an die USDA FoodData Central API übermittelt — ausschließlich via Supabase-Proxy (siehe Abschnitt 4). Die USDA sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. Die Zutatennamen enthalten typischerweise keine personenbezogenen Daten; es obliegt der Nutzerin bzw. dem Nutzer, keine persönlichen Informationen einzugeben. Die USDA ist eine US-Bundesbehörde, die Daten sind Public Domain.</p>
 
     <h2>4. Drittanbieter und Datentransfer in Drittländer</h2>
