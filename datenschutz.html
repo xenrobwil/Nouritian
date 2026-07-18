@@ -24,7 +24,7 @@
   <div class="container">
     <a class="back" href="index.html">← Zurück</a>
     <h1>Datenschutzerklärung</h1>
-    <div class="meta">Stand: Mai 2026 · Xenia Wilhelm, Tuchmacherring 13, 38106 Braunschweig · hello@nouritian.com</div>
+    <div class="meta">Stand: Juli 2026 · Xenia Wilhelm, Tuchmacherring 13, 38106 Braunschweig · hello@nouritian.com</div>
 
     <h2>1. Über Nouritian</h2>
     <p>Nouritian ist eine App zur persönlichen Rezeptverwaltung mit automatischer Nährwertanalyse. Nutzerinnen und Nutzer können Rezepte importieren, speichern und deren Nährwerte berechnen lassen. Alle Rezept- und Nährwertdaten werden ausschließlich lokal auf dem Gerät gespeichert.</p>
@@ -36,13 +36,16 @@
     <ul>
       <li><strong>Rezept-Import per URL:</strong> Rezepttext wird zur Strukturierung an OpenAI übermittelt (via Supabase-Proxy)</li>
       <li><strong>Nährwert-Lookup:</strong> Ins Englische übersetzte Zutatennamen werden an die USDA FoodData Central API übermittelt (via Supabase-Proxy)</li>
+      <li><strong>Barcode-Scan (Produktsuche):</strong> Beim Scannen eines Produktbarcodes wird die Barcode-Nummer (EAN/UPC) an Open Food Facts übermittelt. Dabei werden technisch bedingt Verbindungsdaten (IP-Adresse, Zeitstempel) an Open Food Facts übertragen.</li>
       <li><strong>Autoren-Bilder:</strong> Profilbilder von Rezept-Autoren werden direkt vom Server des jeweiligen Drittanbieters geladen</li>
     </ul>
     <p>Beim Import per Foto oder manueller Eingabe sowie bei der Anzeige gespeicherter Rezepte findet keine Datenübermittlung an externe Dienste statt.</p>
 
     <h2>3. Zweck der Datenverarbeitung</h2>
     <h3>3.1 Lokal gespeicherte Daten</h3>
-    <p>Rezepte, Zutaten, Mengenangaben, Nährwertdaten und App-Einstellungen werden ausschließlich lokal auf dem Gerät (SQLite-Datenbank) gespeichert — zum Zweck der persönlichen Rezeptverwaltung und Nährwertanalyse. Eine Übermittlung an Nouritian oder Dritte findet nicht statt.</p>
+    <p>Rezepte, Zutaten, Mengenangaben, Nährwertdaten, Produktdaten (inkl. selbst angelegter Produkte und via Barcode abgerufener Produktinformationen) sowie App-Einstellungen werden ausschließlich lokal auf dem Gerät (SQLite-Datenbank) gespeichert — zum Zweck der persönlichen Rezeptverwaltung und Nährwertanalyse. Eine Übermittlung an Nouritian oder Dritte findet nicht statt.</p>
+    <p>Die gespeicherten Ernährungs- und Nährwertdaten können je nach Nutzungsweise Informationen über Ernährungsgewohnheiten enthalten, die als Gesundheitsdaten im Sinne von Art. 4 Nr. 15 DSGVO einzustufen sein können. Die Verarbeitung erfolgt ausschließlich lokal auf dem Gerät und auf Basis der Einwilligung der Nutzer:innen (Art. 9 Abs. 2 lit. a DSGVO).</p>
+    <p><strong>Hinweis zu Gerätesicherungen:</strong> Abhängig von den Geräteeinstellungen können lokal gespeicherte App-Daten in iCloud-Backups (iOS) oder Google-Backups (Android) gesichert werden. Dies liegt außerhalb des Einflussbereichs von Nouritian und kann in den Geräteeinstellungen deaktiviert werden.</p>
 
     <h3>3.2 Rezept-Import per URL</h3>
     <p>Der Rezepttext wird zur automatischen Erkennung von Zutaten, Mengenangaben und Zubereitungsschritten an OpenAI übermittelt (via Supabase-Proxy). OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. Der Rezepttext enthält typischerweise keine personenbezogenen Daten.</p>
@@ -56,6 +59,7 @@
     <h2>4. Rechtsgrundlage</h2>
     <p>Die lokale Speicherung von Rezept- und Nährwertdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung bzw. vorvertragliche Maßnahmen — Bereitstellung der App-Funktionen).</p>
     <p>Die vorübergehende Verarbeitung von IP-Adressen und Rezepttexten beim Rezept-Import und Nährwert-Lookup erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse). Das berechtigte Interesse besteht darin, die technische Bereitstellung der App-Funktionen zu ermöglichen — eine Übermittlung ist zwingend notwendig, damit der Dienst genutzt werden kann. Die Verarbeitung beschränkt sich auf das technisch erforderliche Minimum.</p>
+    <p>Die Übertragung von Verbindungsdaten (IP-Adresse, Zeitstempel) beim Barcode-Scan an Open Food Facts erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> (Einwilligung durch aktive Nutzung der Scan-Funktion). Die Kameranutzung für den Barcode-Scan erfolgt ebenfalls auf Grundlage von <strong>Art. 6 Abs. 1 lit. a DSGVO</strong>.</p>
 
     <h2>5. Drittanbieter und internationale Datenübermittlung</h2>
     <p>Beim Rezept-Import und Nährwert-Lookup werden Daten an externe Dienste übermittelt. Diese sind als <strong>Auftragsverarbeiter gem. Art. 28 DSGVO</strong> tätig. Soweit diese Dienste ihren Sitz in den USA haben, erfolgt der Datentransfer auf Basis des <strong>EU-US Data Privacy Framework</strong> (Angemessenheitsbeschluss der EU-Kommission, Juli 2023) sowie hilfsweise der Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO.</p>
@@ -69,6 +73,10 @@
     <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a> ·
     <a href="https://openai.com/policies/data-processing-addendum">openai.com/policies/data-processing-addendum</a></p>
 
+    <h3>Open Food Facts (eigenständig Verantwortlicher)</h3>
+    <p><strong>Zweck:</strong> Produktinformationen und Nährwertdaten bei Barcode-Abfragen · <strong>Betreiber:</strong> Open Food Facts, 21 rue des Malmaisons, 93100 Montreuil, Frankreich · <strong>Server-Standort:</strong> Europäische Union · <strong>Verarbeitete Daten:</strong> Barcode-Nummer (EAN/UPC), IP-Adresse, Zeitstempel · Open Food Facts ist für die eingehenden Anfragen eigenständig Verantwortlicher im Sinne von Art. 4 Nr. 7 DSGVO und verarbeitet Verbindungsdaten gemäß eigener Datenschutzerklärung.<br>
+    <a href="https://world.openfoodfacts.org/privacy">world.openfoodfacts.org/privacy</a></p>
+
     <h3>USDA FoodData Central (öffentliche Datenbank)</h3>
     <p>Die USDA FoodData Central ist eine öffentliche Nährwertdatenbank der US-amerikanischen Bundesbehörde für Landwirtschaft. Übermittelte Zutatennamen enthalten keine personenbezogenen Daten. Die USDA sieht nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers.</p>
 
@@ -78,13 +86,14 @@
       <li><strong>Supabase-Protokolle</strong> (IP-Adresse, Zeitstempel): begrenzte Aufbewahrungszeit, automatische Löschung</li>
       <li><strong>OpenAI-Sicherheitskopien:</strong> bis zu 30 Tage (Missbrauchserkennung), danach automatische Löschung</li>
       <li><strong>USDA:</strong> keine dauerhafte Speicherung von Anfragen</li>
+      <li><strong>Open Food Facts:</strong> keine dauerhafte Speicherung von Anfragen durch Nouritian; Verbindungsdaten (IP-Adresse) werden gemäß Datenschutzerklärung von Open Food Facts verarbeitet</li>
     </ul>
 
     <h2>7. Technische und organisatorische Maßnahmen (TOMs)</h2>
     <p>Alle Datenübertragungen zwischen der App und externen Diensten erfolgen ausschließlich verschlüsselt über HTTPS. API-Schlüssel werden serverseitig in Supabase Secrets gespeichert und sind nicht im App-Bundle enthalten. Nouritian verwendet kein Tracking, keine Werbung und keine Analyse-Tools.</p>
     <p><strong>Berechtigungen der App:</strong></p>
     <ul>
-      <li><strong>Kamera:</strong> Optional, zum Abfotografieren von Rezepten oder Hinzufügen eines Rezeptfotos. Kein dauerhafter Zugriff.</li>
+      <li><strong>Kamera:</strong> Optional, zum Abfotografieren von Rezepten, Hinzufügen eines Rezeptfotos sowie zum Scannen von Produktbarcodes (Produktsuche). Die Kamera wird nur bei aktiver Nutzung der entsprechenden Funktion aktiviert. Es werden keine Kamerabilder dauerhaft gespeichert oder an Server übertragen. Die Berechtigung kann jederzeit in den Geräteeinstellungen widerrufen werden.</li>
       <li><strong>Fotobibliothek:</strong> Optional, zum Auswählen eines Rezeptfotos aus der Galerie oder Importieren eines abfotografierten Rezepts. Kein dauerhafter Zugriff, kein Upload.</li>
       <li><strong>Internet:</strong> Nur für Rezept-Import und Nährwert-Lookup.</li>
     </ul>
@@ -101,6 +110,7 @@
     <ul>
       <li><strong>USDA FoodData Central:</strong> Public Domain</li>
       <li><strong>Bundeslebensmittelschlüssel (BLS 4.0):</strong> © Max Rubner-Institut (MRI), lizenziert unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></li>
+      <li><strong>Open Food Facts:</strong> Produktdaten bei Barcode-Abfragen · <a href="https://world.openfoodfacts.org/privacy">world.openfoodfacts.org/privacy</a></li>
     </ul>
 
     <h2>11. Änderungen</h2>
