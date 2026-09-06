@@ -31,15 +31,23 @@
     <p>Verantwortlicher im Sinne der DSGVO: Xenia Wilhelm, Tuchmacherring 13, 38106 Braunschweig, <a href="mailto:hello@nouritian.com">hello@nouritian.com</a></p>
 
     <h2>2. Erhebung von Daten</h2>
-    <p>Nouritian erhebt <strong>keine personenbezogenen Daten</strong> aktiv. Beim Rezept-Import per URL sowie beim Nährwert-Lookup werden technisch bedingt Daten (Rezepttexte, Zutatennamen, IP-Adresse) vorübergehend an externe Dienste übermittelt. Eine dauerhafte Speicherung auf eigenen Servern findet nicht statt.</p>
-    <p>Folgende Vorgänge führen zu einer Datenübermittlung an externe Dienste:</p>
+    <p>Nouritian erhebt <strong>keine personenbezogenen Daten</strong> aktiv und legt kein Nutzerkonto an. Rezepte, Zutaten und Nährwerte werden ausschließlich lokal auf dem Gerät gespeichert. Für einzelne Funktionen werden Daten vorübergehend an externe Dienste übermittelt; eine dauerhafte Speicherung auf eigenen Servern findet nicht statt.</p>
+    <p>Die folgende Aufstellung ist nach <strong>Vorgängen</strong> geordnet, nicht nach Bildschirmen — dieselbe Übermittlung kann auf mehreren Wegen ausgelöst werden:</p>
     <ul>
-      <li><strong>Rezept-Import per URL:</strong> Rezepttext wird zur Strukturierung an OpenAI übermittelt (via Supabase-Proxy)</li>
-      <li><strong>Nährwert-Lookup:</strong> Ins Englische übersetzte Zutatennamen werden an die USDA FoodData Central API übermittelt (via Supabase-Proxy)</li>
+      <li><strong>Abruf einer Rezeptseite (Import per URL):</strong> Die App ruft die angegebene Internetseite <em>direkt vom Gerät</em> ab. Die aufgerufene Seite sieht dabei die IP-Adresse des Geräts sowie übliche Verbindungsangaben (Browserkennung, Spracheinstellung). Das Auslesen von Zutaten und Zubereitungsschritten aus der Seite erfolgt anschließend auf dem Gerät selbst.</li>
+      <li><strong>Automatische Auswertung von Zutaten und Zubereitungstexten:</strong> Zutatennamen und Zubereitungstexte werden an OpenAI übermittelt (via Supabase-Proxy). Das geschieht bei folgenden Anlässen:
+        <ul>
+          <li>beim <em>Speichern</em> eines importierten oder manuell eingegebenen Rezepts — zur Erkennung alternativer Bezeichnungen derselben Zutat (Zutatennamen und Zubereitungsschritte)</li>
+          <li>beim <em>erstmaligen Öffnen</em> eines gespeicherten Rezepts sowie nach Aktualisierungen der Analyse — zur Zuordnung der Zutaten zu Lebensmittelgruppen (Zutatennamen)</li>
+          <li>bei der <em>Nährwertanalyse</em> und der Zutatensuche — zur Übersetzung der Zutatennamen ins Englische für den Nährwertabruf (Zutatennamen)</li>
+          <li>beim <em>erstmaligen Öffnen des Kochmodus</em> eines Rezepts sowie nach Aktualisierungen dieser Funktion — zur Zuordnung der Zutaten zu den einzelnen Zubereitungsschritten (Zutatennamen mit Mengenangabe und Einheit sowie die Zubereitungsschritte)</li>
+        </ul>
+        Übersetzungen werden auf dem Gerät zwischengespeichert und nicht erneut angefragt.</li>
+      <li><strong>Nährwert-Abruf:</strong> Ins Englische übersetzte Zutatennamen werden an die USDA FoodData Central API übermittelt (via Supabase-Proxy).</li>
       <li><strong>Barcode-Scan (Produktsuche):</strong> Beim Scannen eines Produktbarcodes wird die Barcode-Nummer (EAN/UPC) an Open Food Facts übermittelt. Dabei werden technisch bedingt Verbindungsdaten (IP-Adresse, Zeitstempel) an Open Food Facts übertragen.</li>
-      <li><strong>Autoren-Bilder:</strong> Profilbilder von Rezept-Autoren werden direkt vom Server des jeweiligen Drittanbieters geladen</li>
+      <li><strong>Autoren-Bilder:</strong> Profilbilder von Rezept-Autoren werden beim Anzeigen direkt vom Server des jeweiligen Drittanbieters geladen. Dieser sieht dabei die IP-Adresse des Geräts.</li>
     </ul>
-    <p>Beim Import per Foto oder manueller Eingabe sowie bei der Anzeige gespeicherter Rezepte findet keine Datenübermittlung an externe Dienste statt.</p>
+    <p><strong>Was das Gerät nicht verlässt:</strong> Fotos werden nicht übertragen — weder abfotografierte Rezepte noch selbst hinzugefügte Rezeptbilder. Die Texterkennung findet auf dem Gerät statt; die App verarbeitet nur den Text, den die Nutzerin oder der Nutzer einfügt. Ebenfalls nicht übermittelt werden Rezepttitel, Schlagworte, Quellenangaben, die Zahl der Zubereitungen, die berechneten Nährwerte sowie die App-Einstellungen. An externe Dienste gehen ausschließlich die in der Aufstellung genannten Angaben.</p>
 
     <h2>3. Zweck der Datenverarbeitung</h2>
     <h3>3.1 Lokal gespeicherte Daten</h3>
@@ -47,8 +55,12 @@
     <p>Die gespeicherten Ernährungs- und Nährwertdaten können je nach Nutzungsweise Informationen über Ernährungsgewohnheiten enthalten, die als Gesundheitsdaten im Sinne von Art. 4 Nr. 15 DSGVO einzustufen sein können. Die Verarbeitung erfolgt ausschließlich lokal auf dem Gerät und auf Basis der Einwilligung der Nutzer:innen (Art. 9 Abs. 2 lit. a DSGVO).</p>
     <p><strong>Hinweis zu Gerätesicherungen:</strong> Abhängig von den Geräteeinstellungen können lokal gespeicherte App-Daten in iCloud-Backups (iOS) oder Google-Backups (Android) gesichert werden. Dies liegt außerhalb des Einflussbereichs von Nouritian und kann in den Geräteeinstellungen deaktiviert werden.</p>
 
-    <h3>3.2 Rezept-Import per URL</h3>
-    <p>Der Rezepttext wird zur automatischen Erkennung von Zutaten, Mengenangaben und Zubereitungsschritten an OpenAI übermittelt (via Supabase-Proxy). OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. Der Rezepttext enthält typischerweise keine personenbezogenen Daten.</p>
+    <h3>3.2 Abruf einer Rezeptseite (Import per URL)</h3>
+    <p>Beim Import per URL ruft die App die angegebene Internetseite direkt vom Gerät ab, um daraus Zutaten und Zubereitungsschritte auszulesen. Das Auslesen selbst erfolgt auf dem Gerät; der Seiteninhalt wird dafür nicht an Dritte weitergegeben. Die aufgerufene Seite sieht — wie bei jedem Seitenaufruf — die IP-Adresse des Geräts sowie übliche Verbindungsangaben. Auf die Datenverarbeitung durch die aufgerufene Seite hat Nouritian keinen Einfluss.</p>
+
+    <h3>3.2a Automatische Auswertung von Zutaten und Zubereitungstexten</h3>
+    <p>Zutatennamen und Zubereitungstexte werden an OpenAI übermittelt (via Supabase-Proxy), um alternative Bezeichnungen derselben Zutat zu erkennen, Zutaten Lebensmittelgruppen zuzuordnen, sie für den Nährwertabruf ins Englische zu übersetzen und sie den einzelnen Zubereitungsschritten zuzuordnen. Die Anlässe sind in Abschnitt 2 im Einzelnen aufgeführt; sie betreffen alle Import-Wege gleichermaßen sowie das Öffnen und Kochen gespeicherter Rezepte.</p>
+    <p>OpenAI sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers. Übermittelt werden ausschließlich Zutatenangaben und Zubereitungstexte — kein Rezepttitel, keine Quellenangaben, keine Bilder. Diese Angaben enthalten typischerweise keine personenbezogenen Daten. Werden eigene Anmerkungen in die Zubereitungsschritte geschrieben, sind diese Bestandteil des übermittelten Textes.</p>
 
     <h3>3.3 Nährwert-Lookup</h3>
     <p>Ins Englische übersetzte Zutatennamen werden zur Abfrage von Nährwertdaten an die USDA FoodData Central API übermittelt (via Supabase-Proxy). Die USDA sieht dabei nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers.</p>
@@ -58,18 +70,18 @@
 
     <h2>4. Rechtsgrundlage</h2>
     <p>Die lokale Speicherung von Rezept- und Nährwertdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung bzw. vorvertragliche Maßnahmen — Bereitstellung der App-Funktionen).</p>
-    <p>Die vorübergehende Verarbeitung von IP-Adressen und Rezepttexten beim Rezept-Import und Nährwert-Lookup erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse). Das berechtigte Interesse besteht darin, die technische Bereitstellung der App-Funktionen zu ermöglichen — eine Übermittlung ist zwingend notwendig, damit der Dienst genutzt werden kann. Die Verarbeitung beschränkt sich auf das technisch erforderliche Minimum.</p>
+    <p>Die vorübergehende Verarbeitung von IP-Adressen, Zutatenangaben und Zubereitungstexten beim Abruf einer Rezeptseite, bei der automatischen Auswertung von Zutaten und Zubereitungstexten sowie beim Nährwert-Abruf erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse). Das berechtigte Interesse besteht darin, die technische Bereitstellung der App-Funktionen zu ermöglichen — eine Übermittlung ist zwingend notwendig, damit der Dienst genutzt werden kann. Die Verarbeitung beschränkt sich auf das technisch erforderliche Minimum.</p>
     <p>Die Übertragung von Verbindungsdaten (IP-Adresse, Zeitstempel) beim Barcode-Scan an Open Food Facts erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> (Einwilligung durch aktive Nutzung der Scan-Funktion). Die Kameranutzung für den Barcode-Scan erfolgt ebenfalls auf Grundlage von <strong>Art. 6 Abs. 1 lit. a DSGVO</strong>.</p>
 
     <h2>5. Drittanbieter und internationale Datenübermittlung</h2>
     <p>Beim Rezept-Import und Nährwert-Lookup werden Daten an externe Dienste übermittelt. Diese sind als <strong>Auftragsverarbeiter gem. Art. 28 DSGVO</strong> tätig. Soweit diese Dienste ihren Sitz in den USA haben, erfolgt der Datentransfer auf Basis des <strong>EU-US Data Privacy Framework</strong> (Angemessenheitsbeschluss der EU-Kommission, Juli 2023) sowie hilfsweise der Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO.</p>
 
     <h3>Supabase (Auftragsverarbeiter)</h3>
-    <p><strong>Zweck:</strong> Proxy-Server für OpenAI- und USDA-Anfragen · <strong>Unternehmenssitz:</strong> USA · <strong>Datenverarbeitung:</strong> EU (Frankfurt) · <strong>Verarbeitete Daten:</strong> IP-Adresse, Zeitstempel, Rezepttexte und Zutatennamen (als Bestandteil weitergeleiteter Anfragen) · Supabase speichert Anfrageinhalte nicht dauerhaft; technische Zugriffsprotokolle werden automatisch gelöscht.<br>
+    <p><strong>Zweck:</strong> Proxy-Server für OpenAI- und USDA-Anfragen · <strong>Unternehmenssitz:</strong> USA · <strong>Datenverarbeitung:</strong> EU (Frankfurt) · <strong>Verarbeitete Daten:</strong> IP-Adresse, Zeitstempel, Zubereitungstexte und Zutatennamen (als Bestandteil weitergeleiteter Anfragen) · Supabase speichert Anfrageinhalte nicht dauerhaft; technische Zugriffsprotokolle werden automatisch gelöscht.<br>
     <a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
 
     <h3>OpenAI (Auftragsverarbeiter, via Supabase-Proxy)</h3>
-    <p><strong>Zweck:</strong> Rezept-Parsing und Zutatenanalyse · <strong>Unternehmenssitz und Server:</strong> USA · <strong>Verarbeitete Daten:</strong> Rezepttexte, Zutatennamen · OpenAI sieht nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers · OpenAI speichert Anfrageinhalte nicht für eigene Zwecke und verwendet API-Eingaben nicht für Modelltraining. Aus Sicherheitsgründen können Anfragen bis zu 30 Tage in Sicherheitskopien vorgehalten werden.<br>
+    <p><strong>Zweck:</strong> Auswertung von Zutatenangaben und Zubereitungstexten (alternative Bezeichnungen, Lebensmittelgruppen, Übersetzung für den Nährwertabruf, Zuordnung zu Zubereitungsschritten) · <strong>Unternehmenssitz und Server:</strong> USA · <strong>Verarbeitete Daten:</strong> Zutatennamen, teilweise mit Mengenangabe und Einheit, sowie Zubereitungstexte · OpenAI sieht nur die IP-Adresse des Proxy-Servers, nicht die des Nutzers · OpenAI speichert Anfrageinhalte nicht für eigene Zwecke und verwendet API-Eingaben nicht für Modelltraining. Aus Sicherheitsgründen können Anfragen bis zu 30 Tage in Sicherheitskopien vorgehalten werden.<br>
     <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a> ·
     <a href="https://openai.com/policies/data-processing-addendum">openai.com/policies/data-processing-addendum</a></p>
 
@@ -100,6 +112,8 @@
 
     <h2>8. Deine Rechte (DSGVO)</h2>
     <p>Dir stehen folgende gesetzliche Rechte zu: Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO).</p>
+    <p>Bei Verarbeitungen auf Basis von berechtigtem Interesse (Art. 6 Abs. 1 lit. f) — insbesondere die Auswertung von Zutaten und Zubereitungstexten durch OpenAI — kannst du jederzeit Widerspruch einlegen. Wende dich dazu an <a href="mailto:hello@nouritian.com">hello@nouritian.com</a>. Folge eines Widerspruchs ist, dass die betroffene Funktion (z. B. Lebensmittelgruppen-Zuordnung, Kochmodus) nicht oder nur eingeschränkt genutzt werden kann.</p>
+    <p>Soweit die Verarbeitung auf deiner Einwilligung beruht (Art. 6 Abs. 1 lit. a, z. B. Barcode-Scan), kannst du deine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen — durch Entzug der Kameraberechtigung in den Geräteeinstellungen oder durch Kontaktaufnahme unter <a href="mailto:hello@nouritian.com">hello@nouritian.com</a>.</p>
     <p>Deine Rezeptdaten kannst du jederzeit durch Deinstallation der App vollständig löschen. Bei Anfragen wende dich an: <a href="mailto:hello@nouritian.com">hello@nouritian.com</a></p>
     <p>Du hast zudem das Recht, dich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren — in Niedersachsen ist dies die <a href="https://www.lfd.niedersachsen.de">Landesbeauftragte für den Datenschutz Niedersachsen</a>.</p>
 
